@@ -1,0 +1,21 @@
+{
+  "name": "wd-screenshot",
+  "description": "node wd.js functions that compare selenium screenshots",
+  "version": "0.0.1",
+  "tags": [
+    "wd",
+    "wd.js",
+    "gm",
+    "webdriver",
+    "image",
+    "imagecompare"
+  ],
+  "dependencies": {
+    "gm": "^1.16.0",
+    "lodash": "^2.4.1",
+    "wrench": "^1.5.8"
+  },
+  "peerDependencies": {
+    "wd": "0.x"
+  }
+}
