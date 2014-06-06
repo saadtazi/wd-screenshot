@@ -45,19 +45,3 @@ browser.init({browserName:'firefox'})
   .then(function() { return browser.quit(); })
   .done();
 
-
-// browser.init({browserName:'firefox'})
-// .then(function() {
-//   // http://documentup.com/kriskowal/q/#tutorial/sequences
-
-//   return config.map(function(page) {
-//     return function() {
-//       console.log('saving to ',path.join(__dirname, screenshotPath, page.name + '.png'));
-//       return browser
-//         .get(page.url)
-//         .saveScreenshot(path.join(__dirname, screenshotPath, page.name + '.png'));
-//     };
-//   }).reduce(wd.Q.when, browser);
-// })
-//   .then(function() { return browser.quit(); })
-//   .done();
