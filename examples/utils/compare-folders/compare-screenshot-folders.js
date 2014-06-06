@@ -20,7 +20,7 @@ function callbackGenerator(msg, testName) {
     console.log(testName, msg, ' - res:', res);
   };
 }
-var wdSrcreenshot = WdSrcreenshot(wd);
+var wdSrcreenshot = WdSrcreenshot();
 
 
 wdSrcreenshot

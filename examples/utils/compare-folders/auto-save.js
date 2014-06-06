@@ -17,27 +17,26 @@ $ node examples/project1/utils/auto-save.js
 ```
 
 */
-var wdSrcreenshot;
-try {
-  wdSrcreenshot = require('wd-screenshot');
-} catch( err ) {
-  wdSrcreenshot = require('../../../lib/main');
-}
 
 var path = require('path'),
 
-    wd = require('wd'),
+    wd = require('wd');
 
-    screenshotPath = './screenshots/'
+var wdSrcreenshot;
+// adds the wd-screenshot methods to wd
+try {
+  require('wd-screenshot/wd')(wd);
+} catch( err ) {
+  require('../../../lib/wd')(wd);
+}
+
+var screenshotPath = './screenshots/'
     config = [ { url: 'http://www.radialpoint.com/', name: 'homepage'},
                { url: 'http://www.radialpoint.com/products/reveal/', name: 'reveal-page'},
                { url: 'http://www.radialpoint.com/asfwe', name: '404-page'}
              ],
 
     browser = wd.promiseChainRemote();
-
-// adds the wd-screenshot methods
-wdSrcreenshot(wd);
 
 
 browser.init({browserName:'firefox'})

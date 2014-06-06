@@ -14,7 +14,7 @@ function callbackGenerator(msg, testName) {
     console.log(testName, msg, ' - res:', res);
   };
 }
-var wdSrcreenshot = WdSrcreenshot(wd);
+var wdSrcreenshot = WdSrcreenshot();
 wdSrcreenshot
   .compareScreenshot(path.join(__dirname, './reference.png'), path.join(__dirname, './test.png'), {tolerance: 0.4})
   .then(callbackGenerator('is equal', 'test1'), callbackGenerator('is NOT equal', 'test1'));
@@ -30,7 +30,8 @@ wdSrcreenshot
     path.join(__dirname, './test-close-enough.png'),
     {
       tolerance: 0.1,
-      file: path.join(__dirname, './diffs/diff.png')
+      highlightStyle: 'Tint',
+      file: path.join(__dirname, './diffs/diff-Tint.png')
     }
   )
   .then(callbackGenerator('is equal', 'test3'), callbackGenerator('is NOT equal', 'test3 (with diff)'));

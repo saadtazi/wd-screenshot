@@ -17,11 +17,10 @@ $ node examples/project1/utils/auto-save.js
 ```
 
 */
-var wdSrcreenshot;
 try {
-  wdSrcreenshot = require('wd-screenshot');
+  require('wd-screenshot/wd')(wd);
 } catch( err ) {
-  wdSrcreenshot = require('../../../lib/main');
+  require('../../../lib/wd')(wd);
 }
 
 var path = require('path'),
@@ -38,9 +37,6 @@ var path = require('path'),
 
     browser = wd.promiseChainRemote();
 
-// adds the wd-screenshot methods
-wdSrcreenshot(wd);
-
 
 browser.init({browserName:'firefox'})
 .noop()
@@ -48,19 +44,3 @@ browser.init({browserName:'firefox'})
   .then(function() { return browser.quit(); })
   .done();
 
-
-// browser.init({browserName:'firefox'})
-// .then(function() {
-//   // http://documentup.com/kriskowal/q/#tutorial/sequences
-
-//   return config.map(function(page) {
-//     return function() {
-//       console.log('saving to ',path.join(__dirname, screenshotPath, page.name + '.png'));
-//       return browser
-//         .get(page.url)
-//         .saveScreenshot(path.join(__dirname, screenshotPath, page.name + '.png'));
-//     };
-//   }).reduce(wd.Q.when, browser);
-// })
-//   .then(function() { return browser.quit(); })
-//   .done();
