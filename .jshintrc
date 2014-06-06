@@ -156,6 +156,7 @@
       "beforeEach", "afterEach",
       "describe",
       "context",
-      "it"
+      "it",
+      "expect"
     ]
 }
