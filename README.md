@@ -1,5 +1,10 @@
 # wd-screenshot
 
+[![Dependency Status](https://david-dm.org/saadtazi/wd-sreenshot.png)](https://david-dm.org/saadtazi/wd-sreenshot)
+
+[![NPM](https://nodei.co/npm/wd-sreenshot.png)](https://nodei.co/npm/wd-sreenshot/)
+
+
 Provides methods that adds image comparison using [gm](http://aheckmann.github.io/gm/) node library, a [GraphicsMagick](http://www.graphicsmagick.org/) wrapper.
 
 Also provides [wd.js](https://github.com/admc/wd) methods that can be used when testing using selenium.
