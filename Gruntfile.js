@@ -38,15 +38,7 @@ module.exports = function(grunt) {
       options: {
         require: ['lib-cov/test/globals.js']
       },
-      'mocha-lcov-reporter': {
-        options: {
-          reporter: 'mocha-lcov-reporter',
-          quiet: true,
-          captureFile: 'lcov.info'
-        },
-        src: ['lib-cov/test/spec/**/*.js']
-      },
-      'travis-cov': {
+      traviscov: {
         options: {
           reporter: 'travis-cov'
         },
@@ -66,7 +58,7 @@ module.exports = function(grunt) {
         },
         src: ['test/spec/**/*.spec.js']
       },
-      'htmlcov': {
+      htmlcov: {
         options: {
           reporter: 'html-cov',
           quiet: true,
@@ -127,8 +119,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('travis', [  'jshint',
                                   'prepare',
-                                  'mochaTest:mocha-lcov-reporter',
-                                   'mochaTest:travis-cov',
+                                   'mochaTest:traviscov',
                                    'coveralls'
                                 ]);
   grunt.registerTask('default', ['jshint', 'test']);

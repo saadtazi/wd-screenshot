@@ -26,6 +26,7 @@
     "matchdep": "^0.3.0",
     "chai": "^1.9.1",
     "grunt-contrib-clean": "^0.5.0",
-    "grunt-contrib-copy": "^0.5.0"
+    "grunt-contrib-copy": "^0.5.0",
+    "chai-fs": "0.0.3"
   }
 }
