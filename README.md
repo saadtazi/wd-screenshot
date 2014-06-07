@@ -1,8 +1,8 @@
 # wd-screenshot
 
-[![Dependency Status](https://david-dm.org/saadtazi/wd-sreenshot.png)](https://david-dm.org/saadtazi/wd-sreenshot)
+[![Dependency Status](https://david-dm.org/saadtazi/wd-sreenshot.png)](https://david-dm.org/saadtazi/wd-screenshot)
 
-[![NPM](https://nodei.co/npm/wd-sreenshot.png)](https://nodei.co/npm/wd-sreenshot/)
+[![NPM](https://nodei.co/npm/wd-sreenshot.png)](https://nodei.co/npm/wd-screenshot/)
 
 
 Provides methods that adds image comparison using [gm](http://aheckmann.github.io/gm/) node library, a [GraphicsMagick](http://www.graphicsmagick.org/) wrapper.
