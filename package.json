@@ -1,7 +1,7 @@
 {
   "name": "wd-screenshot",
-  "description": "node wd.js functions that compare selenium screenshots",
-  "version": "0.0.1",
+  "description": "node functions that compare selenium screenshots and wdjs custom methods",
+  "version": "0.0.2",
   "main": "./lib/main",
   "directories": {
     "lib": "./lib"
