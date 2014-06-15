@@ -96,10 +96,46 @@ check [this example](./examples/utils/compare-screenshot/compare-screenshot.js) 
 
 ## wd.js methods
 
-All the main functions `compareScreenshot`
+### Usage
 
 ```
-var wd = require('')
+var wd = require('wd'),
+    wdScreenshot = require('wd-screenshot')({/*wd-screenshot options*/});
+
+// this is where the magic happens
+wdScreenshot.addFunctions(wd);
+```
+
+### compareScreenshot and compareScreenshotFolders
+
+
+```
+browser.init({browserName: 'firefox'})
+  .get('http://www.google.com')
+  //... do some stuff.. like calling takeScreenshot()
+  .compareScreenshot('reference.png', 'test.png')
+  //...
+  .compareScreenshotFolders(path.join(__dirname, './references'), path.join(__dirname, './screenshots'), {tolerance: 0.01})
+
+  .fin(function() { return browser.quit(); })
+  .done();
+
+```
+
+### saveScreenshots
+
+Helper wd functions that takes a list of urls and save a screenshot when the url is loaded. Not really helpful with single page apps though...
+
+```
+browser.saveScreenshots([ { url: 'http://domain.com/page-1', name: 'page-1'},
+                          {url: 'http://domain.com/page-2', name: 'page-2'}], './screenshots')
+```
+
+### compareWithReferenceScreenshot
+
+```
+// filePath is optional. allows to save the tested image
+compareWithReferenceScreenshot(imageRefPath, compareConfig, filePath)
 ```
 
 # API
@@ -108,7 +144,7 @@ Check [here](./api/).
 
 # Recommandations
 
-I strongly recommend that you write a wd.js script that saves the original screenshot. This will saves you a lot of time when refactoring/redesigning your site. See an example [here](./examples/project1/utils/auto-save.js).
+I strongly recommend that you write a wd.js script that saves the original screenshot (wd `saveScreenshots()` from this library might help). This will saves you a lot of time when refactoring/redesigning your site. See an example [here](./examples/project1/utils/auto-save.js).
 
 The added `saveScreenshots` wd method can help you with that.
 
@@ -117,5 +153,5 @@ For more complex usecases, you can of course also use the native wd `saveScreens
 
 # Thank you!
 
-I would like to thank [radialpoint](http://radialpoint.com) for organizing hackaton during office hours that allowed me to develop this tool.
+I would like to thank [radialpoint](http://radialpoint.com) for organizing hackatons during office hours that allowed me to start working on this tool.
 

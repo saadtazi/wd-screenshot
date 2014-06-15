@@ -1,10 +1,10 @@
-// var fs = require('fs');
+/*global wdScreenshot*/
 
 describe('main functions', function() {
   'use strict';
 
   function init(config) {
-    return mainFunctions(config);
+    return wdScreenshot(config);
   }
   describe('initialization', function () {
     it('should work without config options', function() {

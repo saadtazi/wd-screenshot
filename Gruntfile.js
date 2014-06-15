@@ -79,6 +79,19 @@ module.exports = function(grunt) {
       }
     },
 
+    mochaWebdriver: {
+      local: {
+        src: ['test/wd/spec/*.spec.js'],
+        options: {
+          timeout: 1000 * 60 * 3,
+          usePromises: true,
+          require: ['test/globals.js'],
+          usePhantom: true,
+          phantomPort: 5555
+        }
+      }
+    },
+
     watch: {
       test: {
         files: ['**/*.js'],
