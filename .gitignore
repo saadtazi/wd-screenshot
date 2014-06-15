@@ -33,3 +33,4 @@ node_modules
 # generated images
 diffs
 examples/project1/references
+test/wd/screenshots/**/*.png

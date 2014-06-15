@@ -2,6 +2,7 @@
 var path = require('path');
 
 describe('wd custom functions', function() {
+  'use strict';
   before(function() {
     wdScreenshot({Q: this.wd.Q}).addFunctions(this.wd);
   });
@@ -43,11 +44,9 @@ describe('wd custom functions', function() {
       });
   });
 
-  it.only('should add compareWithReferenceScreenshot', function() {
+  it('should add compareWithReferenceScreenshot', function() {
     return this.browser.get('http://www.radialpoint.com/')
-      .compareWithReferenceScreenshot('./test/wd/screenshots/homepage.png')
-      .then(function() {
-        console.log(arguments);
-      })
+      // should be ok
+      .compareWithReferenceScreenshot('./test/wd/screenshots/homepage.png');
   });
 });

@@ -38,19 +38,13 @@ module.exports = function(grunt) {
       options: {
         require: ['lib-cov/test/globals.js']
       },
-      traviscov: {
-        options: {
-          reporter: 'travis-cov'
-        },
-        src: ['lib-cov/test/spec/**/*.js']
-      },
+      // traviscov: {
+      //   options: {
+      //     reporter: 'travis-cov'
+      //   },
+      //   src: ['lib-cov/test/spec/**/*.js']
+      // },
 
-      testLocal: {
-        options: {
-          reporter: 'spec'
-        },
-        src: ['lib-cov/test/spec/**/*.spec.js']
-      },
       testpure: {
         options: {
           reporter: 'spec',
@@ -70,14 +64,14 @@ module.exports = function(grunt) {
 
     },
 
-    coveralls: {
-      options: {
-        force: true
-      },
-      all: {
-        src: 'lcov.info'
-      }
-    },
+    // coveralls: {
+    //   options: {
+    //     force: true
+    //   },
+    //   all: {
+    //     src: 'lcov.info'
+    //   }
+    // },
 
     mochaWebdriver: {
       local: {
@@ -86,6 +80,7 @@ module.exports = function(grunt) {
           timeout: 1000 * 60 * 3,
           usePromises: true,
           require: ['test/globals.js'],
+          reporter: 'spec',
           usePhantom: true,
           phantomPort: 5555
         }
@@ -131,9 +126,8 @@ module.exports = function(grunt) {
 
 
   grunt.registerTask('travis', [  'jshint',
-                                  'prepare',
-                                   'mochaTest:traviscov',
-                                   'coveralls'
+                                  'mochaTest:testpure',
+                                  'mochaWebdriver:local'
                                 ]);
   grunt.registerTask('default', ['jshint', 'test']);
 

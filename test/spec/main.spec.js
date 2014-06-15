@@ -39,7 +39,7 @@ describe('main functions', function() {
 
     it('should return a fulfilled promise when images are  similar', function(done) {
       scrnsht.compareScreenshot('./test/fixtures/folder1/spec100.jpg', './test/fixtures/folder1/spec1000.jpg', {tolerance: 0.1})
-        .then(function(equality) {
+        .then(function(/*equality*/) {
           done();
         }, function(err) {
           done(err);
@@ -48,9 +48,9 @@ describe('main functions', function() {
 
     it('should return a rejected promise when images are not similar', function(done) {
       scrnsht.compareScreenshot('./test/fixtures/folder1/spec100.jpg', './test/fixtures/folder1/spec1000.jpg', {tolerance: 0.0001})
-        .then(function(equality) {
+        .then(function(/*equality*/) {
           done('images should not be considered similar');
-        }, function(err) {
+        }, function(/*err*/) {
           done();
         });
     });
@@ -83,7 +83,7 @@ describe('main functions', function() {
 
     it('should return a fulfilled promise when images are  similar', function(done) {
       scrnsht.compareScreenshotFolders('./test/fixtures/folder1/', './test/fixtures/folder2/')
-        .then(function(equality) {
+        .then(function(/*equality*/) {
           done();
         }, function(err) {
           done(err);
@@ -92,9 +92,9 @@ describe('main functions', function() {
 
     it('should return a rejected promise when images are not similar', function(done) {
       scrnsht.compareScreenshotFolders('./test/fixtures/folder1/', './test/fixtures/folder2/', {tolerance: 0.0001})
-        .then(function(equality) {
+        .then(function(/*equality*/) {
           done(new Error('images should not be considered similar'));
-        }, function(err) {
+        }, function(/*err*/) {
           done();
         });
     });
@@ -105,7 +105,7 @@ describe('main functions', function() {
         './test/fixtures/folder1/',
         './test/fixtures/folder1/',
         {  saveDiffImagePath: diffPath, highlightColor: 'magenta', highlghtStyle: 'XOR'})
-        .then(function(equalities) {
+        .then(function(/*equalities*/) {
           expect(diffPath + 'spec100.jpg').to.be.a.file();
           expect(diffPath + 'spec1000.jpg').to.be.a.file();
           done();

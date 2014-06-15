@@ -24,7 +24,7 @@
       "url": "https://github.com/saadtazi/wd-screenshot/blob/master/LICENSE"
     }
   ],
-   "bugs": {
+  "bugs": {
     "url": "https://github.com/saadtazi/wd-screenshot/issues"
   },
   "engines": [
@@ -48,6 +48,7 @@
     "chai": "^1.9.1",
     "grunt-contrib-clean": "^0.5.0",
     "grunt-contrib-copy": "^0.5.0",
-    "chai-fs": "0.0.3"
+    "chai-fs": "0.0.3",
+    "wd": "~0.3.0"
   }
 }

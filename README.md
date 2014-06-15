@@ -1,5 +1,5 @@
 # wd-screenshot
-
+[![Build Status](https://travis-ci.org/saadtazi/wd-screenshot.png)](https://travis-ci.org/saadtazi/wd-screenshot)
 [![Dependency Status](https://david-dm.org/saadtazi/wd-screenshot.png)](https://david-dm.org/saadtazi/wd-screenshot)
 
 [![NPM](https://nodei.co/npm/wd-screenshot.png)](https://nodei.co/npm/wd-screenshot/)
@@ -124,7 +124,7 @@ browser.init({browserName: 'firefox'})
 
 ### saveScreenshots
 
-Helper wd functions that takes a list of urls and save a screenshot when the url is loaded. Not really helpful with single page apps though...
+Helper wd function that takes a list of urls and save a screenshot when the url is loaded. Not really helpful with single page apps though...
 
 ```
 browser.saveScreenshots([ { url: 'http://domain.com/page-1', name: 'page-1'},
