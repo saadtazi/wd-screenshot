@@ -15,9 +15,52 @@ Also provides [wd.js](https://github.com/admc/wd) methods that can be used when 
 npm install wd-screenshot
 ```
 
-# Usage
+# Initialization
 
-## Main functions
+## `require('wd-screenshot')(options)`
+
+Retuns an object that has the following functions:
+
+* `compareScreenshot()`
+* `compareScreenshotFolders()`
+* `addFunctions()` that adds wd custom methods
+
+
+# Main functions
+
+## `compareScreenshot(pathToImage1, pathToImage2, options)`
+
+Compares 2 images and returns a promise that is rejected if the 2 images are not equal (= below the tolerance),
+or fulfilled when they are equal.
+
+```
+compareScreenshot(pathToReferenceImage, pathToTestImage, options)
+  .then(
+    function(equality) { // fulfilled
+      // equality is a integer between 0 and 1, 0 means images are equal
+      // ...
+    },
+    function(error) {  // rejected
+      // error is an Error object with a descriptive message
+    })
+```
+
+## compareScreenshotFolders(pathToReferenceFolder, pathToTestFolder, options)
+
+Compares all the images found in the test folder with the corresponding image in the reference folder, and returns a promise that is rejected if the one image or more are not equal,
+or fulfilled when they are all equal.
+
+```
+compareScreenshotFolders(pathToReferenceFolder, pathToTestFolder, options)
+  .then(
+    function(equalities) {...}, // fulfilled. equalities is an array of equality numbers (int between 0 and 1)
+    function(errors) {          // rejected
+      // errors is an array that contains equality numbers or errors
+    })
+```
+
+
+# Examples
 
 ```
 // basic usage
@@ -94,7 +137,7 @@ wdScreenshot.compareScreenshot(
 check [this example](./examples/utils/compare-screenshot/compare-screenshot.js) and [this other example](./examples/utils/compare-folders/compare-screenshot-folders.js).
 
 
-## wd.js methods
+## wd.js Methods
 
 ### Usage
 
@@ -138,9 +181,6 @@ browser.saveScreenshots([ { url: 'http://domain.com/page-1', name: 'page-1'},
 compareWithReferenceScreenshot(imageRefPath, compareConfig, filePath)
 ```
 
-# API
-
-Check [here](./api/).
 
 # Recommandations
 
@@ -148,10 +188,10 @@ I strongly recommend that you write a wd.js script that saves the original scree
 
 The added `saveScreenshots` wd method can help you with that.
 
-For more complex usecases, you can of course also use the native wd `saveScreenshot(savingPath)` method.
+For more complex usecases, you can of course also use the native wd `saveScreenshot(savePath)` method.
 
 
 # Thank you!
 
-I would like to thank [radialpoint](http://radialpoint.com) for organizing hackatons during office hours that allowed me to start working on this tool.
+I would like to thank [radialpoint](http://radialpoint.com) for organizing hackatons during office hours that allowed me to start working on this library.
 
