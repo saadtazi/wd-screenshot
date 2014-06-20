@@ -37,7 +37,7 @@ or fulfilled when they are equal.
 compareScreenshot(pathToReferenceImage, pathToTestImage, options)
   .then(
     function(equality) { // fulfilled
-      // equality is a integer between 0 and 1, 0 means images are equal
+      // equality is a number between 0 and 1, 0 means images are equal
       // ...
     },
     function(error) {  // rejected
@@ -53,7 +53,7 @@ or fulfilled when they are all equal.
 ```
 compareScreenshotFolders(pathToReferenceFolder, pathToTestFolder, options)
   .then(
-    function(equalities) {...}, // fulfilled. equalities is an array of equality numbers (int between 0 and 1)
+    function(equalities) {...}, // fulfilled. equalities is an array of equality numbers (number between 0 and 1)
     function(errors) {          // rejected
       // errors is an array that contains equality numbers or errors
     })
@@ -178,9 +178,27 @@ browser.saveScreenshots([ { url: 'http://domain.com/page-1', name: 'page-1'},
 
 ```
 // filePath is optional. allows to save the tested image
-compareWithReferenceScreenshot(imageRefPath, compareConfig, filePath)
+browser.get('http://domain.url')
+  .compareWithReferenceScreenshot(imageRefPath, compareConfig, filePath)
 ```
 
+### saveCroppedScreenshots
+
+Save multiple regions of the browser window when visiting a page.
+
+cropOptions is an array that should contain object with the following properties:
+* `name`: the name of the cropped region, used to save the file (using name + '.png'). required
+* `with`, `height`: the image and height of the cropped region. required
+* `x`, `y`: the coordinate where the cropping starts (optional). They default to 0. x needs to be less than window width and y less than window height.
+
+Note that there is no garanty that the cropped image will have a size `width`x`height. For example, if x < width but x + width > windowWidth, then final width will be windowWidth - x.
+
+```
+browser.get('http://www.domain.url')
+  .saveCroppedScreenshots([ { name: 'topleft', x: 0, y: 0, width: 100, height: 100},
+                            { name: 'under', x: 100, y: 0, width: 100, height: 100}
+    ], './test/wd/screenshots/');
+```
 
 # Recommandations
 
@@ -194,4 +212,12 @@ For more complex usecases, you can of course also use the native wd `saveScreens
 # Thank you!
 
 I would like to thank [radialpoint](http://radialpoint.com) for organizing hackatons during office hours that allowed me to start working on this library.
+
+# Change Log
+
+## 0.0.3
+
+added `saveCroppedScreenshots(cropOptions, savePath)`
+
+
 

@@ -49,4 +49,15 @@ describe('wd custom functions', function() {
       // should be ok
       .compareWithReferenceScreenshot('./test/wd/screenshots/homepage.png');
   });
+
+  it('should add saveCroppedScreenshots', function() {
+    return this.browser.get('http://www.radialpoint.com/')
+      // should be ok
+      .saveScreenshot('./test/wd/screenshots/fullimage.png')
+      .saveCroppedScreenshots([ { name: 'topleft', x: 0, y: 0, width: 100, height: 100},
+                                { name: 'topleft2', width: 100, height: 100},
+                                { name: 'under', x: 100, y: 100, width: 100, height: 100},
+                                { name: 'over', width: 600, height: 100, x: 400, y: 0}
+      ], './test/wd/screenshots/');
+  });
 });
