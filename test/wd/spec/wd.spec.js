@@ -29,9 +29,9 @@ describe('wd custom functions', function() {
 
   it('should add saveScreenshots', function(done) {
     var savedPath = './test/wd/screenshots',
-        urls = [ { url: 'http://www.radialpoint.com/', name: 'homepage'},
-                 { url: 'http://www.radialpoint.com/products/reveal/', name: 'reveal-page'},
-                 { url: 'http://www.radialpoint.com/asfwe', name: '404-page'}
+        urls = [ { url: 'http://www.saadtazi.com/', name: 'homepage'},
+                 { url: 'http://www.fruitsoftware.com/', name: 'another-page'},
+                 { url: 'http://wikipedia.org/fefefe', name: '404-page'}
                ];
     this.browser.saveScreenshots(urls, savedPath)
       .then(function() {
@@ -45,19 +45,19 @@ describe('wd custom functions', function() {
   });
 
   it('should add compareWithReferenceScreenshot', function() {
-    return this.browser.get('http://www.radialpoint.com/')
+    return this.browser.get('http://www.saadtazi.com/')
       // should be ok
       .compareWithReferenceScreenshot('./test/wd/screenshots/homepage.png');
   });
 
   it('should add saveCroppedScreenshots', function() {
-    return this.browser.get('http://www.radialpoint.com/')
+    return this.browser.get('http://www.saadtazi.com/')
       // should be ok
       .saveScreenshot('./test/wd/screenshots/fullimage.png')
       .saveCroppedScreenshots([ { name: 'topleft', x: 0, y: 0, width: 100, height: 100},
                                 { name: 'topleft2', width: 100, height: 100},
                                 { name: 'under', x: 100, y: 100, width: 100, height: 100},
-                                { name: 'over', width: 600, height: 100, x: 400, y: 0}
+                                { name: 'over', width: 200, height: 100, x: 200, y: 0}
       ], './test/wd/screenshots/');
   });
 });
