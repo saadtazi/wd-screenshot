@@ -25,6 +25,10 @@ Retuns an object that has the following functions:
 * `compareScreenshotFolders()`
 * `addFunctions()` that adds wd custom methods
 
+# Options
+
+* `Q`: a promise library. Will `require(Q)` if not provided (might fail if Q not installed)
+* `gmSubclass`: Allow to to [use imageMagick instead of GraphickMagic](http://aheckmann.github.io/gm/docs.html#imagemagick). ImageMagick needs to be installed if you want to use this option.
 
 # Main functions
 
@@ -218,6 +222,3 @@ I would like to thank [radialpoint](http://radialpoint.com) for organizing hacka
 ## 0.0.3
 
 added `saveCroppedScreenshots(cropOptions, savePath)`
-
-
-
