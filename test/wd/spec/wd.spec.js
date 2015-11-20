@@ -7,6 +7,10 @@ describe('wd custom functions', function() {
     wdScreenshot({Q: this.wd.Q}).addFunctions(this.wd);
   });
 
+  it('should allow to pass subclass options', function () {
+      
+  });
+
   it('should add compareScreenshot', function(done) {
     this.browser.compareScreenshot('./test/fixtures/folder1/spec100.jpg', './test/fixtures/folder1/spec100.jpg')
       .then(function(equality) {
